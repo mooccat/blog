@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
+    "jquery": "^3.1.0",
     "simplemde": "^1.11.2",
-    "vue": "^1.0.21"
+    "vue": "^1.0.21",
+    "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "vuex": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
