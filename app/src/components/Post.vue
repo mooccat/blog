@@ -40,8 +40,8 @@
 <script>
 import {fetchSorts,fetchTags,addArticle} from '../vuex/actions'
 import {getPostTitle,getPostAuthor,getPostImg,getSortSelected,getTagSelected,getSorts,getTags} from '../vuex/getters'
-import SimpleMDECss from '../js/dist/simplemde.min.css';
-import SimpleMDE from '../js/dist/simplemde.min';
+import SimpleMDECss from '../js/md/simplemde.min.css';
+import SimpleMDE from '../js/md/simplemde.min';
 
 export default{
 	data(){
