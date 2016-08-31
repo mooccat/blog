@@ -33,8 +33,9 @@ export const fetchTags = ({dispatch}) => {
 };
 
 export const addArticle = ({dispatch},article) => {
-  Api.addArticle(article).then(response => {
+  return Api.addArticle(article).then(response => {
     dispatch('ADD_ARTICLE_SUCCESS', response.data.data);
+    return  Promise.resolve(response.data.data._id);
   }, err => {
 
   });

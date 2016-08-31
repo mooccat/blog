@@ -83,8 +83,11 @@ export default{
 			const content = this.simplemde.value();
 			const tags = this.tagChecked;
 			const sort = this.sortChecked;
-			console.log(tags);
-			this.addArticle({title,author,img,content,tags,sort});
+			this.addArticle({title,author,img,content,tags,sort})
+			.then((id)=>{
+				this.$route.router.go({ name: 'article', params: { id: id }})
+			});
+
 		}
 
 
