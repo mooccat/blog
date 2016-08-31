@@ -2,10 +2,13 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import configRouter from './routers'
-import VueResource  from 'vue-resource'
+import { timeToNow,IdToName } from './filters'
 
+import store from './vuex/store'
+
+Vue.filter('timeToNow',timeToNow)
+Vue.filter('IdToName',IdToName)
 Vue.use(VueRouter)
-Vue.use(VueResource)
 const router = new VueRouter(
   {
   	// history: true, //html5模式 去掉锚点

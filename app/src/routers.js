@@ -1,22 +1,18 @@
 export default (router) => router.map({
   '/': {
     name: 'index',
-    component: require('./components/Navbar')
-  },
-  '/hello': {
-    name: 'hello',
-    component: require('./components/Hello')
+    component: require('./components/ArticleList')
   },
   '/post': {
   	name:'post',
   	component: require('./components/Post')
   },
-  '/article': {
-  	name:'article',
-  	component: require('./components/ArticleList')
+  '/sort':{
+    name:'sort',
+    component: require('./components/Sort')
   },
    '/article/:id': {
-  name:'article',
-  component: require('./components/Article')
+    name:'article',
+    component: require('./components/Article')
   },
 })

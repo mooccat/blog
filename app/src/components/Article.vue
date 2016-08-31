@@ -1,27 +1,43 @@
 <template>
-  	<h1>{{article.title}}</h1>
-    <div class="container">{{{article.content}}}</div>
+<div class="container" style="margin-top:60px;">
+	<div class="row">
+		<div class="col-md-8">
+			<h1>{{article.title}}</h1>
+			<div>{{{article.content}}}</div>
+		</div>
+	</div>
+</div>
 </template>
 <script>
+import {fetchArticle} from '../vuex/actions'
+import {getArticle} from '../vuex/getters'
+import highlightCss from '../js/highlight.js/styles/default.css'
 export default{
 	data() {
 		return {
-			article:{},
+			
+		}
+	},
+	vuex:{
+		actions:{
+			fetchArticle
+		},
+		getters:{
+			article:getArticle,
 		}
 	},
 	ready(){
-      var resource = this.$resource('article{/id}');
-      // GET someItem/1
-      resource.get({id:this.$route.params.id}).then((response) => {
-         var res =  JSON.parse(response.body);
-         console.log(res+res.data);
-         this.article = res.data;        
-      });		
-	}
+		
+	},
+	route: {
+      data({ to: { params: { id } } }) {
+        this.fetchArticle(id);
+      },
+    },
 }
 </script>
 <style>
 .container{
-  width: 620px;
+	margin: auto;
 }
 </style>
