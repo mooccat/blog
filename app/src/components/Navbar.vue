@@ -50,7 +50,7 @@ export default {
         },
         {
           text:"文章",
-          name:"article"
+          name:""
         },
         {
           text:"关于",

@@ -1,7 +1,7 @@
 export default (router) => router.map({
   '/': {
     name: 'index',
-    component: require('./components/ArticleList')
+    component: require('./views/index')
   },
   '/post': {
   	name:'post',
@@ -13,6 +13,6 @@ export default (router) => router.map({
   },
    '/article/:id': {
     name:'article',
-    component: require('./components/Article')
-  },
+    component: require('./views/article')
+  }, 
 })

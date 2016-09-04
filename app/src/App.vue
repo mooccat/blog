@@ -24,5 +24,16 @@ export default {
     font-size: 18px;
     background-color: #F2F2F2;
   }
-
+  .side-panel{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow:0 0 10px rgba(22, 160, 133,1.0); 
+    margin-bottom: 20px;
+    padding: 40px 20px;
+  }
+  .side-span{
+    margin-right: 5px;
+    margin-bottom: 10px;
+    float: left;
+  }
 </style>

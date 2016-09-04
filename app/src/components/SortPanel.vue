@@ -1,0 +1,45 @@
+<template>
+	<div class="side-panel">
+		<p>分类</p>
+		<div v-for="sort in sorts">
+			<span class="side-span label label-default" v-if="$index%6==0">{{sort.name}}</span>
+			<span class="side-span label label-primary" v-if="$index%6==1">{{sort.name}}</span>
+			<span class="side-span label label-success" v-if="$index%6==2">{{sort.name}}</span>
+			<span class="side-span label label-warning" v-if="$index%6==3">{{sort.name}}</span>
+			<span class="side-span label label-danger" v-if="$index%6==4">{{sort.name}}</span>
+			<span class="side-span label label-info" v-if="$index%6==5">{{sort.name}}</span>
+		</div>
+		<div class="clearfix"></div>
+
+	</div>
+</template>
+<style>
+	
+
+</style>
+<script>
+import {getSorts} from '../vuex/getters'
+import {fetchSorts} from '../vuex/actions'
+
+
+export default{
+	data() {
+		return {
+
+		}
+	},
+	vuex:{
+		actions:{
+  			fetchSorts
+		},
+		getters:{
+    		sorts:getSorts
+		}
+	},
+	route: {
+     	data() {
+        	this.fetchSorts();
+    	}
+    },
+}
+</script>

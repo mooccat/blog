@@ -16,7 +16,7 @@
                 	<th v-for="th in addSortInput.ths">{{th}}</th> 
                 </tr>
   				<tr v-for="sort in sorts">
-  					<td>{{sort.name}}</td>
+  					<td><div>{{sort.name}}</div></td>
   					<td><a class="glyphicon glyphicon-pencil operatIcon" aria-hidden="true"  @click.prevent.stop="updateSortEvent(sort._id)"></a></td>
   				</tr>
   			</table>
@@ -55,7 +55,7 @@ export default {
 			addTagText:"",
 			sortFormShow:false,
 			tagFormShow:false,
-
+      sortEdit:[],
 		}
 	},
   	vuex :{
@@ -87,7 +87,7 @@ export default {
   			const tag = {name:this.addTagText};
   			this.addTag(tag);
   		},
-  		updateSortEvent(id){
+  		updateSortEvent(id,$inidex){
   			console.log(id);
   		},
   		updateTagEvent(id){
