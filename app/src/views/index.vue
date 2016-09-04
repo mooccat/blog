@@ -13,12 +13,9 @@
 </div>
 
 </template>
-<style>
-
-</style>
 <script>
 import articleListView from '../components/ArticleList'
-import sortPanel from '../components/sortPanel'
+import sortPanel from '../components/SortPanel'
 import tagPanel from '../components/TagPanel'
 import {getArticleList,getSorts,getTags} from '../vuex/getters'
 import {fetchArticleList,fetchSorts,fetchTags} from '../vuex/actions'

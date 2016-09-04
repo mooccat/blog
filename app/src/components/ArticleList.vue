@@ -67,7 +67,7 @@
 		width: 100%;
 		height: 0px;
 		padding-bottom: 30%;
-  		 `overflow: hidden;
+  		overflow: hidden;
 	}
 	.abstract-img img{
 		width: 100%;
