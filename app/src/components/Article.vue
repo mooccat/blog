@@ -55,7 +55,10 @@
 						</div>
 					</div>
 					<div class="clearfix"></div>
+					<div id="comment-box" ></div>
+
 				</section>
+
 			</div>
 		</div>
 	</div>
@@ -83,12 +86,21 @@ export default{
 		}
 	},
 	ready(){
-		this.fetchSorts();
-      	this.fetchTags();
+		function toggleDuoshuoComments(container,article){
+		    var el = document.createElement('div');//该div不需要设置class="ds-thread"
+		    el.setAttribute('data-thread-key', article._id);//必选参数
+		    el.setAttribute('data-url', 'http://fishliu.com/article'+article._id);//必选参数
+		    DUOSHUO.EmbedThread(el);
+		    jQuery(container).append(el);
+		};
+		let article = this.article;
+		toggleDuoshuoComments('#comment-box',article);
 	},
 	route: {
       	data({ to: { params: { id } } }) {
         	this.fetchArticle(id);
+        	this.fetchSorts();
+      		this.fetchTags();
       	},
     },
 }

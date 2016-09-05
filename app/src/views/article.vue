@@ -1,6 +1,7 @@
 <template>
 
 	<article-page></article-page>
+	
 </template>
 <script>
 import articlePage from '../components/Article'
