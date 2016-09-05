@@ -86,15 +86,17 @@ export default{
 		}
 	},
 	ready(){
-		function toggleDuoshuoComments(container,article){
+		const id = this.$route.params.id;
+		function toggleDuoshuoComments(container,id){
 		    var el = document.createElement('div');//该div不需要设置class="ds-thread"
-		    el.setAttribute('data-thread-key', article._id);//必选参数
-		    el.setAttribute('data-url', 'http://fishliu.com/article'+article._id);//必选参数
+		    var url= 'http://fishliu.com/article'+id;
+		    console.log(url);
+		    el.setAttribute('data-thread-key',id);//必选参数
+		    el.setAttribute('data-url', url);//必选参数
 		    DUOSHUO.EmbedThread(el);
 		    jQuery(container).append(el);
 		};
-		let article = this.article;
-		toggleDuoshuoComments('#comment-box',article);
+		toggleDuoshuoComments('#comment-box',id);
 	},
 	route: {
       	data({ to: { params: { id } } }) {

@@ -52,6 +52,7 @@ export const fetchArticleList = ({dispatch}) => {
 export const fetchArticle = ({dispatch},id) => {
   Api.fetchArticle(id).then(response => {
     dispatch('FETCH_ARTICLE_SUCCESS', response.data.data);
+    return  Promise.resolve(response.data.data._id);
   }, err => {
 
   });

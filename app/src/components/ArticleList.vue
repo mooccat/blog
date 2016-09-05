@@ -51,6 +51,7 @@
 				</div>
 				<a class="btn btn-primary pull-right remore" href="#/article/{{abstract._id}}">Read More</a>
 			</div>
+			<div class="clearfix"></div>
 		</div>
 		<div class="clearfix"></div>
 	</section>
