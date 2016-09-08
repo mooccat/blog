@@ -4,7 +4,7 @@
 		<div class="abstract col-md-12 col-sm-12">
 			<div class="abstract-img">
 				<a href="#/article/{{abstract._id}}">
-					<img v-bind:src="abstract.img+'-title'"alt=""></a>
+					<img v-bind:src="abstract.img"alt=""></a>
 			</div>
 			<div class="abstract-title">
 				<h1>
@@ -120,30 +120,7 @@ import {fetchArticleList,fetchSorts,fetchTags} from '../vuex/actions'
 
 
 export default{
-	data() {
-		return {
-
-		}
-	},
-	vuex:{
-		actions:{
-			fetchArticleList,
-			fetchSorts,
-  			fetchTags
-		},
-		getters:{
-			articleList:getArticleList,
-			sorts:getSorts,
-    		tags:getTags
-		}
-	},
-	route: {
-     	data() {
-        	this.fetchArticleList();
-        	this.fetchSorts();
-        	this.fetchTags();
-    	}
-    },
+	props:['articleList','sorts','tags'],
 }
 </script>
 <style>

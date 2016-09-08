@@ -28,6 +28,8 @@ export default{
 
 		}
 	},
+		  props:['sorts'],
+
 	vuex:{
 		actions:{
   			fetchSorts

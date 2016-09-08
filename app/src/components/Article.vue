@@ -6,8 +6,8 @@
 				<section>
 					<div class="abstract col-md-12 col-sm-12">
 						<div class="abstract-img">
-							<a href="">
-								<img v-bind:src="article.img+'-title'"alt=""></a>
+							<a href="#/article/{{article._id}}">
+								<img v-bind:src="article.img"alt=""></a>
 						</div>
 						<div class="abstract-title">
 							<h1>
@@ -68,43 +68,7 @@ import {fetchArticle,fetchSorts,fetchTags} from '../vuex/actions'
 import {getArticle,getSorts,getTags} from '../vuex/getters'
 import highlightCss from '../js/highlight.js/styles/default.css'
 export default{
-	data() {
-		return {
-			
-		}
-	},
-	vuex:{
-		actions:{
-			fetchArticle,
-			fetchSorts,
-			fetchTags
-		},
-		getters:{
-			article:getArticle,
-			tags:getTags,
-			sorts:getSorts,
-		}
-	},
-	ready(){
-		const id = this.$route.params.id;
-		function toggleDuoshuoComments(container,id){
-		    var el = document.createElement('div');//该div不需要设置class="ds-thread"
-		    var url= 'http://fishliu.com/article'+id;
-		    console.log(url);
-		    el.setAttribute('data-thread-key',id);//必选参数
-		    el.setAttribute('data-url', url);//必选参数
-		    DUOSHUO.EmbedThread(el);
-		    jQuery(container).append(el);
-		};
-		toggleDuoshuoComments('#comment-box',id);
-	},
-	route: {
-      	data({ to: { params: { id } } }) {
-        	this.fetchArticle(id);
-        	this.fetchSorts();
-      		this.fetchTags();
-      	},
-    },
+	  props:['article','sorts','tags'],
 }
 </script>
 <style>

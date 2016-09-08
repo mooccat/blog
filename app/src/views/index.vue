@@ -2,11 +2,11 @@
 <div class="container" style="margin-top:60px;">
 	<div class="row">
 		<div class="col-md-8">
-			<article-list-view></article-list-view>		
+			<article-list-view :article-list="articleList" :sorts="sorts" :tags="tags"></article-list-view>		
 		</div>
 		<div class="col-md-4">
-			<sort-panel></sort-panel>
-			<tag-panel></tag-panel>
+			<sort-panel :sorts="sorts"></sort-panel>
+			<tag-panel :tags="tags"></tag-panel>
 		</div>
 		<div class="clearfix"></div>
 	</div>

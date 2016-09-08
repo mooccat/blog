@@ -79,7 +79,7 @@ export default{
 		post() {
 			const title = this.postTopicTitle;
 			const author = this.postTopicAuthor;
-			const img = this.postTopicImg;
+			const img = this.postTopicImg + 'title';
 			const content = this.simplemde.value();
 			const tags = this.tagChecked;
 			const sort = this.sortChecked;
