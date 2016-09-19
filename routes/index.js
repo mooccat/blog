@@ -42,7 +42,7 @@ router.post('/article', function(req, res, next) {
 });
 
 router.get('/article', function(req, res, next) {
-    ArticleModel.find()
+    ArticleModel.find().sort('-creat_at')
         .then((articles)=>{
             for(i=0;i<articles.length;i++)
             {
@@ -89,10 +89,40 @@ router.get('/article/:id', function(req, res, next) {
             });
         } else {
             // article.content = article.content.split("<!--more-->")[0];
+            var mdContent = article.content;
+            var newArticle={};
             article.content = md.render(article.content);
+            Object.assign(newArticle,article._doc,{md:mdContent});
+            console.log(newArticle);
             res.json({
                 type: true,
-                data: article
+                data: newArticle
+            });
+        }
+    })
+});
+
+router.put('/article/:id', function(req, res, next) {
+    var _id = req.params.id;
+    var condition = {_id:_id};
+    var update = req.body;
+    ArticleModel.update(condition,update,function (err,doc) {
+        if (err) {
+            res.json({
+                type: false,
+                data: err
+            });
+        } else {
+            // article.content = article.content.split("<!--more-->")[0];
+            var article = req.body;
+            var mdContent = article.content;
+            var newArticle={};
+            article.content = md.render(article.content);
+            Object.assign(newArticle,article,{md:mdContent,_id:_id});
+            console.log(newArticle);
+            res.json({
+                type: true,
+                data: newArticle
             });
         }
     })

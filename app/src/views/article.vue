@@ -7,7 +7,6 @@
 import articlePage from '../components/Article'
 import {fetchArticle,fetchSorts,fetchTags} from '../vuex/actions'
 import {getArticle,getSorts,getTags} from '../vuex/getters'
-import highlightCss from '../js/highlight.js/styles/default.css'
 
 export default{
 	components:{
@@ -40,8 +39,8 @@ export default{
 	},
 	route: {
       data({ to: { params: { id } } }) {
-        this.fetchArticle(id);
-        this.fetchSorts();
+      	this.fetchArticle(id);
+      	this.fetchSorts();
       	this.fetchTags();
       },
     },

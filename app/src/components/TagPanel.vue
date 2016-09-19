@@ -28,7 +28,8 @@ export default{
 
 		}
 	},
-	props:['tags'],
+			  props:['tags'],
+
 	vuex:{
 		actions:{
   			fetchTags

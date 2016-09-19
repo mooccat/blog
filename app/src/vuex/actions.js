@@ -41,6 +41,15 @@ export const addArticle = ({dispatch},article) => {
   });
 };
 
+export const modifyArticle = ({dispatch},article,id) => {
+  return Api.modifyArticle(article,id).then(response => {
+    dispatch('MODIFY_ARTICLE_SUCCESS', response.data.data);
+    return  Promise.resolve(response.data.data._id);
+  }, err => {
+
+  });
+};
+
 export const fetchArticleList = ({dispatch}) => {
   Api.fetchArticleList().then(response => {
     dispatch('FETCH_ARTICLELIST_SUCCESS', response.data.data);
@@ -50,9 +59,10 @@ export const fetchArticleList = ({dispatch}) => {
 };
 
 export const fetchArticle = ({dispatch},id) => {
-  Api.fetchArticle(id).then(response => {
+  return Api.fetchArticle(id).then(response => {
     dispatch('FETCH_ARTICLE_SUCCESS', response.data.data);
-    return  Promise.resolve(response.data.data._id);
+    return  Promise.resolve(response.data.data);
+
   }, err => {
 
   });

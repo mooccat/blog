@@ -4,23 +4,23 @@
 			<div class="form-group">
 				<label for="input{{postTitle.id}}" class="col-sm-2 col-md-2 control-label">{{postTitle.label}}:</label>
 				<div class="col-sm-10 col-md-10">
-					<input type="{{postTitle.type}}" class="form-control" id="input{{postTitle.id}}" placeholder="{{postTitle.label}}" v-bind:value="postTitle.value" v-model="postTopicTitle"></div>
+					<input type="{{postTitle.type}}" class="form-control" id="input{{postTitle.id}}" placeholder="{{postTitle.label}}" v-bind:value="postTitle.value" v-model="postTopic.postTopicTitle"></div>
 			</div>
 			<div class="form-group">
 				<label for="input{{postAuthor.id}}" class="col-sm-2 col-md-2 control-label">{{postAuthor.label}}:</label>
 				<div class="col-sm-10 col-md-10">
-					<input type="{{postAuthor.type}}" class="form-control" id="input{{postAuthor.id}}" placeholder="{{postAuthor.label}}" v-bind:value="postAuthor.value" v-model="postTopicAuthor"></div>
+					<input type="{{postAuthor.type}}" class="form-control" id="input{{postAuthor.id}}" placeholder="{{postAuthor.label}}" v-bind:value="postAuthor.value" v-model="postTopic.postTopicAuthor"></div>
 			</div>
 			<div class="form-group">
 				<label for="input{{postImg.id}}" class="col-sm-2 col-md-2 control-label">{{postImg.label}}:</label>
 				<div class="col-sm-10 col-md-10">
-					<input type="{{postImg.type}}" class="form-control" id="input{{postImg.id}}" placeholder="{{postImg.label}}" v-bind:value="postImg.value" v-model="postTopicImg"></div>
+					<input type="{{postImg.type}}" class="form-control" id="input{{postImg.id}}" placeholder="{{postImg.label}}" v-bind:value="postImg.value" v-model="postTopic.postTopicImg"></div>
 			</div>
 			<div class="form-group">
 				<label for="{{sortSelected.id}}" class="col-sm-2 col-md-2 control-label">{{sortSelected.label}}</label>
 				<div class="col-sm-10 col-md-10">
 					<label class="radio-inline" v-for="sort in sorts">
-					  <input type="radio" name="inlineRadioOptions" value="{{sort._id}}" v-model="sortChecked"> {{sort.name}}
+					  <input type="radio" name="inlineRadioOptions"  v-bind:value="sort._id" v-model="postTopic.sortChecked"> {{sort.name}}
 					</label>
 				</div>
 			</div>
@@ -28,7 +28,7 @@
 				<label for="{{tagSelected.id}}" class="col-sm-2 col-md-2 control-label">{{tagSelected.label}}</label>
 				<div class="col-sm-10 col-md-10">
 					<label class="checkbox-inline" v-for="tag in tags">
-					  <input type="checkbox" value="{{tag._id}}" v-model="tagChecked"> {{tag.name}}
+					  <input type="checkbox" v-model="postTopic.tagChecked" v-bind:value="tag._id"> {{tag.name}}
 					</label>
 				</div>
 			</div>
@@ -40,64 +40,28 @@
 <script>
 import {fetchSorts,fetchTags,addArticle} from '../vuex/actions'
 import {getPostTitle,getPostAuthor,getPostImg,getSortSelected,getTagSelected,getSorts,getTags} from '../vuex/getters'
-import SimpleMDECss from '../js/md/simplemde.min.css';
-import SimpleMDE from '../js/md/simplemde.min';
+
 
 export default{
-	data(){
-		return {
-			postTopicTitle:"",
-			postTopicAuthor:"",
-			postTopicImg:"",
-			postTopicSort:"",
-			postTopicTag:"",
-			sortChecked:[],
-			tagChecked:[],
-
-		}
-	},
-	vuex:{
-		actions:{
-			fetchSorts,
-			fetchTags,
-			addArticle
-		},
-		getters:{
-			postTitle:getPostTitle,
-			postAuthor:getPostAuthor,
-			postImg:getPostImg,
-			sortSelected:getSortSelected,
-			tagSelected:getTagSelected,
-			sorts:getSorts,
-    		tags:getTags
-		}
-	},
-	ready() {
-		this.simplemde = new SimpleMDE();
-	},
+	props:['postTitle','postAuthor','postImg','sortSelected','tagSelected','sorts','tags','postTopic'],
 	methods: {
 		post() {
-			const title = this.postTopicTitle;
-			const author = this.postTopicAuthor;
-			const img = this.postTopicImg + 'title';
-			const content = this.simplemde.value();
-			const tags = this.tagChecked;
-			const sort = this.sortChecked;
-			this.addArticle({title,author,img,content,tags,sort})
-			.then((id)=>{
-				this.$route.router.go({ name: 'article', params: { id: id }})
-			});
+			this.$dispatch('post-article');
+			this.$dispatch('modify-article');
+
+			// const title = this.postTopic.postTopicTitle;
+			// const author = this.postTopic.postTopicAuthor;
+			// const img = this.postTopic.postTopicImg + '-title';
+			// const content = this.simplemde.value();
+			// const tags = this.postTopic.tagChecked;
+			// const sort = this.postTopic.sortChecked;
+			// this.addArticle({title,author,img,content,tags,sort})
+			// .then((id)=>{
+			// 	this.$route.router.go({ name: 'article', params: { id: id }})
+			// });
 
 		}
-
-
 	},
-	route: {
-   		data() {
-     		this.fetchSorts();
-     		this.fetchTags();
-    	}
-    },
 }
 </script>
 <style>

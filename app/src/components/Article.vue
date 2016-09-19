@@ -64,11 +64,12 @@
 	</div>
 </template>
 <script>
-import {fetchArticle,fetchSorts,fetchTags} from '../vuex/actions'
-import {getArticle,getSorts,getTags} from '../vuex/getters'
 import highlightCss from '../js/highlight.js/styles/default.css'
 export default{
 	  props:['article','sorts','tags'],
+	  ready(){
+	  	console.log(this.article.data);
+	  },
 }
 </script>
 <style>
