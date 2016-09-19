@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
-const baseUrl = 'http://localhost:3000/';
+const baseUrl = '/';
 
 
 export default {
