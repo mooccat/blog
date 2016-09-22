@@ -227,8 +227,8 @@ router.get('/tag', function(req, res, next) {
 });
 
 router.get('/sort/:sortId', function(req, res, next) {
-    var id = mongoose.Types.ObjectId(req.params.sortId).sort('-creat_at');
-    ArticleModel.find({"sort":id})
+    var id = mongoose.Types.ObjectId(req.params.sortId);
+    ArticleModel.find({"sort":id}).sort('-creat_at')
         .then((articles)=>{
                 console.log(articles);
                 for(i=0;i<articles.length;i++)
