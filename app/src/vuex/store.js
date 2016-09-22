@@ -79,11 +79,11 @@ const mutations = {
 	},
 	MODIFY_ARTICLE_SUCCESS(state,article){
 		state.article = article;
-		// for (var i = state.articleList.length - 1; i >= 0; i--) {
-		// 	if(state.articleList[i]._id== article._id){
-		// 		state.articleList[i] = article;
-		// 	}
-		// }
+		for (var i = state.articleList.length - 1; i >= 0; i--) {
+			if(state.articleList[i]._id== article._id){
+				state.articleList[i] = article;
+			}
+		}
 	},
 	FETCH_ARTICLELIST_SUCCESS(state,articleList){
 		state.articleList=articleList;

@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
-const baseUrl = '/';
+const baseUrl = 'http://localhost:3000/';
 
 
 export default {
@@ -31,5 +31,11 @@ export default {
   },
   fetchArticle: (params) => {
     return Vue.resource(baseUrl+'article/'+params).get();
+  },
+  fetchSortList: (params) => {
+    return Vue.resource(baseUrl+'sort/'+params).get();
+  },
+  fetchTagList: (params) => {
+    return Vue.resource(baseUrl+'tags/'+params).get();
   },
 };

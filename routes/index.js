@@ -227,14 +227,47 @@ router.get('/tag', function(req, res, next) {
 });
 
 router.get('/sort/:sortId', function(req, res, next) {
-    var _id = req.params.id;
-    ArticleModel.find({sort:_id})
-        .then((article) => abstract(article))
-        .catch((err) => res.json({
-            type: false,
-            data: err
-        }))
-});
+    var id = mongoose.Types.ObjectId(req.params.sortId).sort('-creat_at');
+    ArticleModel.find({"sort":id})
+        .then((articles)=>{
+                console.log(articles);
+                for(i=0;i<articles.length;i++)
+               {
+                   articles[i].content = articles[i].content.split("<!--more-->")[0];
+                   articles[i].content = md.render(articles[i].content);
+               };
 
+               res.json({
+                   type: true,
+                   data: articles
+               });
+           })
+           .catch((err) => res.json({
+               type: false,
+               data: err
+           }))
+});
+router.get('/tags/:tagId', function(req, res, next) {
+    var id = mongoose.Types.ObjectId(req.params.tagId);
+    console.log(id);
+    ArticleModel.find({"tags": id}).sort('-creat_at')
+        .then((articles)=>{
+        console.log(articles);
+    for(i=0;i<articles.length;i++)
+    {
+        articles[i].content = articles[i].content.split("<!--more-->")[0];
+        articles[i].content = md.render(articles[i].content);
+    };
+
+    res.json({
+        type: true,
+        data: articles
+    });
+})
+    .catch((err) => res.json({
+        type: false,
+        data: err
+    }))
+});
 
 module.exports = router;

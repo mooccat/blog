@@ -67,3 +67,18 @@ export const fetchArticle = ({dispatch},id) => {
 
   });
 };
+
+export const fetchSortList = ({dispatch},id) => {
+  Api.fetchSortList(id).then(response => {
+    dispatch('FETCH_ARTICLELIST_SUCCESS', response.data.data);
+  }, err => {
+
+  });
+};
+
+export const fetchTagList = ({dispatch},id) => {
+  Api.fetchTagList(id).then(response => {
+    dispatch('FETCH_ARTICLELIST_SUCCESS', response.data.data);
+  }, err => {
+  });
+};

@@ -2,12 +2,12 @@
 	<div class="side-panel">
 		<p>标签</p>
 		<div v-for="tag in tags">
-			<span class="side-span label label-default" v-if="$index%6==0">{{tag.name}}</span>
-			<span class="side-span label label-primary" v-if="$index%6==1">{{tag.name}}</span>
-			<span class="side-span label label-success" v-if="$index%6==2">{{tag.name}}</span>
-			<span class="side-span label label-warning" v-if="$index%6==3">{{tag.name}}</span>
-			<span class="side-span label label-danger" v-if="$index%6==4">{{tag.name}}</span>
-			<span class="side-span label label-info" v-if="$index%6==5">{{tag.name}}</span>
+			<a href="#/tags/{{tag._id}}" class="side-span label label-default" v-if="$index%6==0">{{tag.name}}</a>
+			<a href="#/tags/{{tag._id}}" class="side-span label label-primary" v-if="$index%6==1">{{tag.name}}</a>
+			<a href="#/tags/{{tag._id}}" class="side-span label label-success" v-if="$index%6==2">{{tag.name}}</a>
+			<a href="#/tags/{{tag._id}}" class="side-span label label-warning" v-if="$index%6==3">{{tag.name}}</a>
+			<a href="#/tags/{{tag._id}}" class="side-span label label-danger" v-if="$index%6==4">{{tag.name}}</a>
+			<a href="#/tags/{{tag._id}}" class="side-span label label-info" v-if="$index%6==5">{{tag.name}}</a>
 		</div>
 		<div class="clearfix"></div>
 	</div>

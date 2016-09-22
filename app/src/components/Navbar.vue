@@ -49,10 +49,6 @@ export default {
           name:"index"
         },
         {
-          text:"文章",
-          name:""
-        },
-        {
           text:"关于",
         },
         {

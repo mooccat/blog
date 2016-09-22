@@ -19,4 +19,12 @@ export default (router) => router.map({
     name:'edit',
     component: require('./views/postArticle')
   }, 
+  '/sort/:id': {
+    name:'sortList',
+    component: require('./views/sortList')
+  },
+  '/tags/:id': {
+    name:'tagList',
+    component: require('./views/tagList')
+  },  
 })

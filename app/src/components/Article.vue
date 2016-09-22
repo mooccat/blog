@@ -17,12 +17,12 @@
 						<div class="divider col-md-12 col-sm-12"></div>
 						<div class="abstract-meta">
 							<div class="pull-left tag-meta" v-for="tag in article.tags">
-								<span class="label label-default" v-if="$index%6==0">{{tag | IdToName tags}}</span>
-								<span class="label label-primary" v-if="$index%6==1">{{tag | IdToName tags}}</span>
-								<span class="label label-success" v-if="$index%6==2">{{tag | IdToName tags}}</span>
-								<span class="label label-warning" v-if="$index%6==3">{{tag | IdToName tags}}</span>
-								<span class="label label-danger" v-if="$index%6==4">{{tag | IdToName tags}}</span>
-								<span class="label label-info" v-if="$index%6==5">{{tag | IdToName tags}}</span>
+								<a href="#/tags/{{tag}}" class="label label-default" v-if="$index%6==0">{{tag | IdToName tags}}</a>
+								<a href="#/tags/{{tag}}" class="label label-primary" v-if="$index%6==1">{{tag | IdToName tags}}</a>
+								<a href="#/tags/{{tag}}" class="label label-success" v-if="$index%6==2">{{tag | IdToName tags}}</a>
+								<a href="#/tags/{{tag}}" class="label label-warning" v-if="$index%6==3">{{tag | IdToName tags}}</a>
+								<a href="#/tags/{{tag}}" class="label label-danger" v-if="$index%6==4">{{tag | IdToName tags}}</a>
+								<a href="#/tags/{{tag}}" class="label label-info" v-if="$index%6==5">{{tag | IdToName tags}}</a>
 							</div>
 						</div>
 						<div class="clearfix"></div>
@@ -47,7 +47,7 @@
 								</span>
 								<span class="posted-on">
 									<i class="glyphicon glyphicon-bookmark"></i>
-									<a>
+									<a href="#/sort/{{article.sort}}">
 										<span>{{article.sort | IdToName sorts}}</span>
 									</a>
 								</span>
