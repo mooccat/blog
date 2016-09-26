@@ -9,4 +9,5 @@ var SortSchema   = new Schema({
     }],
 });
 
-module.exports = mongoose.model('Sort', SortSchema);
+// module.exports = mongoose.model('Sort', SortSchema);
+mongoose.model('Sort', SortSchema);

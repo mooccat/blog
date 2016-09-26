@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var web_routers = require('./web_routers');
 var users = require('./routes/users');
 
 var app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'app/dist')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/', web_routers);
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
